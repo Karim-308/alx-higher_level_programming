@@ -14,4 +14,3 @@ python3 -m py_compile $PYFILE
 # Move the compiled file to the desired location
 mv __pycache__/*.pyc "${PYFILE}c"
 rm -r __pycache__
-
