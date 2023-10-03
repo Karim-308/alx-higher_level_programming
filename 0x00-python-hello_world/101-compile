@@ -1,0 +1,17 @@
+#!/bin/bash
+# This script compiles a Python script file
+
+# Check if PYFILE environment variable is set
+if [ -z "$PYFILE" ]; then
+	echo "PYFILE is not set"
+	exit 1
+fi
+
+# Compiling the Python file
+echo "Compiling $PYFILE ..."
+python3 -m py_compile $PYFILE
+
+# Move the compiled file to the desired location
+mv __pycache__/*.pyc "${PYFILE}c"
+rm -r __pycache__
+
