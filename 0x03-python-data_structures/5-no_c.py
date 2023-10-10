@@ -1,4 +1,7 @@
 #!/usr/bin/python3
 def no_c(my_string):
-    return ''.join([char for char in my_string if char not in ['c', 'C']])
-
+    listofchars = list(my_string)
+    for char in listofchars:
+        if char == 'c' or char == 'C':
+            listofchars.remove(char)
+    return("".join(listofchars))
