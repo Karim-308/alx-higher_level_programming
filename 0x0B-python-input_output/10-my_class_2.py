@@ -1,23 +1,37 @@
 #!/usr/bin/python3
-""" My class module
+"""
+    Module for class Student
 """
 
-class MyClass:
-    """ My class
+
+class Student:
     """
+        A class students that defines a student by:
+        Attributes:
+            first_name (str): name of student.
+            last_name (str): name of student.
+            age (int): age of student.
+        Methods:
+            __init__ - initializes the Student instance.
+            to_json - retrieves dictionary repr of Student instance.
+    """
+    def __init__(self, first_name, last_name, age):
+        """
+            Initialises Student instance.
+        """
+        self.first_name = first_name
+        self.last_name = last_name
+        self.age = age
 
-    score = 0
+    def to_json(self, attr=None):
+        """
+            retrieves a dictionary representation of Student.
+            Args:
+                attr (list): attribute names that are to be retrieved.
+        """
 
-    def __init__(self, name, number = 4):
-        self.__name = name
-        self.number = number
-        self.is_team_red = (self.number % 2) == 0
-
-    def win(self):
-        self.score += 1
-
-    def lose(self):
-        self.score -= 1
-
-    def __str__(self):
-        return "[MyClass] {} - {:d} => {:d}".format(self.__name, self.number, self.score)
+        if attr is not None:
+            res = {k: self.__dict__[k] for k in self.__dict__.keys() & attr}
+            return res
+        else:
+            return self.__dict__
