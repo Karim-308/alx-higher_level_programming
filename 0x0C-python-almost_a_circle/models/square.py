@@ -1,62 +1,83 @@
 #!/usr/bin/python3
-""" Module that contains class Square, inheritance of class Rectangle """
+'''Define the class Square.'''
 from models.rectangle import Rectangle
 
 
 class Square(Rectangle):
-    """ Class Square """
+    '''Represent Square class.'''
 
     def __init__(self, size, x=0, y=0, id=None):
-        """ Initializes instances """
+        '''Initialize the new Square object.
+
+        Args:
+           size (int): The size of the square.
+           x (int): The x coordinate of the square.
+           y (int): The y coordinate of the square.
+           id (int): The identity of the square.
+        '''
         super().__init__(size, size, x, y, id)
 
     def __str__(self):
-        """ str special method """
-        str_square = "[Square] "
-        str_id = "({}) ".format(self.id)
-        str_xy = "{}/{} - ".format(self.x, self.y)
-        str_size = "{}".format(self.width)
-
-        return str_square + str_id + str_xy + str_size
+        '''Return [Square] (<id>) <x>/<y> - <size> format.'''
+        return "[Square] ({}) {}/{} - {}".format(self.id,
+                                                 self.x, self.y,
+                                                 self.height)
 
     @property
     def size(self):
-        """ Getter size """
+        '''Get/Set the size of the square.'''
         return self.width
 
     @size.setter
     def size(self, value):
-        """ Setter size """
         self.width = value
         self.height = value
 
     def update(self, *args, **kwargs):
-        """ update method """
-        if args is not None and len(args) is not 0:
-            list_atr = ['id', 'size', 'x', 'y']
-            for i in range(len(args)):
-                if list_atr[i] == 'size':
-                    setattr(self, 'width', args[i])
-                    setattr(self, 'height', args[i])
-                else:
-                    setattr(self, list_atr[i], args[i])
-        else:
+        '''Update the square attributes.
+
+        Args:
+           *args (ints): The list of arguments - no-keyworded arguments.
+               - 1st argument should be the id attribute.
+               - 2nd argument should be the size attribute.
+               - 3rd argument should be the x attribute.
+               - 4th argument should be the y attribute.
+            **kwargs (dict): A double pointer to a dictionary: key/value.
+        '''
+        if args and len(args) != 0:
+            argument = 0
+            for arg in args:
+                if argument == 0:
+                    if arg is None:
+                        self.__init__(self.size, self.x, self.y)
+                    else:
+                        self.id = arg
+                elif argument == 1:
+                    self.size = arg
+                elif argument == 2:
+                    self.x = arg
+                elif argument == 3:
+                    self.y = arg
+                argument += 1
+        elif kwargs and len(kwargs) != 0:
             for key, value in kwargs.items():
-                if key == 'size':
-                    setattr(self, 'width', value)
-                    setattr(self, 'height', value)
-                else:
-                    setattr(self, key, value)
+                if key == 'id':
+                    if value is None:
+                        self.__init__(self.size, self.x, self.y)
+                    else:
+                        self.id = value
+                elif key == 'size':
+                    self.size = value
+                elif key == 'x':
+                    self.x = value
+                elif key == 'y':
+                    self.y = value
 
     def to_dictionary(self):
-        """ Returns a dictionary with attributes """
-        list_atr = ['id', 'size', 'x', 'y']
-        dict_res = {}
-
-        for key in list_atr:
-            if key == 'size':
-                dict_res[key] = getattr(self, 'width')
-            else:
-                dict_res[key] = getattr(self, key)
-
-        return dict_res
+        '''Returns the dictionary representation of a Square.'''
+        return {
+                'id': self.id,
+                'size': self.size,
+                'x': self.x,
+                'y': self.y
+                }
