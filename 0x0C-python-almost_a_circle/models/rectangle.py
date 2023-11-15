@@ -68,11 +68,14 @@ class Rectangle(Base):
                               args[4] if len(args) > 4 else self.__y)
         else:
             if 'width' in kwargs or 'height' in kwargs:
-                self.set_dimensions(kwargs.get('width', self.__width),
-                                    kwargs.get('height', self.__height))
+                new_width = kwargs.get('width', self.__width)
+                new_height = kwargs.get('height', self.__height)
+                self.set_dimensions(new_width, new_height)
             if 'x' in kwargs or 'y' in kwargs:
-                self.set_position(kwargs.get('x', self.__x),
-                                  kwargs.get('y', self.__y))
+                new_x = kwargs.get('x', self.__x)
+                new_y = kwargs.get('y', self.__y)
+                self.set_position(new_x, new_y)
+
 
     def to_dictionary(self):
         """ method that returs a dictionary with properties """
