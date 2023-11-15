@@ -1,4 +1,4 @@
-# models/base.py
+#!/usr/bin/python3
 class Base:
     """Base class for shape models."""
     __nb_objects = 0
