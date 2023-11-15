@@ -10,6 +10,15 @@ class Square(Rectangle):
         """ Initializes instances """
         super().__init__(size, size, x, y, id)
 
+    def __str__(self):
+        """ str special method """
+        str_square = "[Square] "
+        str_id = "({}) ".format(self.id)
+        str_xy = "{}/{} - ".format(self.x, self.y)
+        str_size = "{}".format(self.width)
+
+        return str_square + str_id + str_xy + str_size
+
     @property
     def size(self):
         """ Getter size """
@@ -20,15 +29,6 @@ class Square(Rectangle):
         """ Setter size """
         self.width = value
         self.height = value
-
-    def __str__(self):
-        """ str special method """
-        str_square = "[Square] "
-        str_id = "({}) ".format(self.id)
-        str_xy = "{}/{} - ".format(self.x, self.y)
-        str_size = "{}".format(self.width)
-
-        return str_square + str_id + str_xy + str_size
 
     def update(self, *args, **kwargs):
         """ update method """
