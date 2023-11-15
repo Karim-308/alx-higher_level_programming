@@ -76,6 +76,7 @@ class Rectangle(Base):
                 new_y = kwargs.get('y', self.__y)
                 self.set_position(new_x, new_y)
 
+    
 
     def to_dictionary(self):
         """ method that returs a dictionary with properties """
