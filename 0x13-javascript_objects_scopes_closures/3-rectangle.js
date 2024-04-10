@@ -6,17 +6,18 @@ class Rectangle {
       this.height = h;
     }
   }
-  
-  print() {
-    let i = this.width; // Declare i using let
-    let j = this.height; // Declare j using let
-    while (i > 0) {
-      while (j > 0) {
-        console.log('X');
-        j = j - 1;
+
+  /**
+   * @property {method} print - prints the rectangle using the character X
+   * @returns void
+   */
+  print () {
+    for (let i = 0; i < this.height; i++) {
+      let s = '';
+      for (let j = 0; j < this.width; j++) {
+        s += 'X';
       }
-      console.log('\n'); // Use \n for newline
-      i = i - 1;
+      console.log(s);
     }
   }
 }
