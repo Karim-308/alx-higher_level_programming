@@ -15,9 +15,6 @@ if __name__ == '__main__':
     cur = db.cursor()
     cur.execute("SELECT * FROM states")
 
-    rows = cur.fetchall()
-    for i in rows:
-        print(i)
-    # Clean up process
-    cur.close()
-    db.close()
+    cur = db.cursor()
+    cur.execute("SELECT * FROM `states`")
+    [print(state) for state in cur.fetchall()]
