@@ -11,12 +11,12 @@ import sys
 if __name__ == '__main__':
     # Construct the URL for the Github API endpoint
     github_username = sys.argv[1]
-    github_password = sys.argv[2]
+    gitpassword = sys.argv[2]
     github_api_url = 'https://api.github.com/users/{}'.format(github_username)
 
     # Send a GET request to the Github API with basic authentication
     response = requests.get(github_api_url,
-                            auth=HTTPBasicAuth(github_username, github_password))
+                            auth=HTTPBasicAuth(github_username, gitpassword))
 
     # Print the user's id if the request is successful
     if response.status_code == 200:
