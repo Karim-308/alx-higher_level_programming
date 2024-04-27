@@ -16,7 +16,7 @@ if __name__ == "__main__":
         with req.urlopen(target_url) as response:
             # Read the response body
             response_body = response.read()
-            
+
             # Display the decoded response body
             print(response_body.decode('utf-8'))
     except err.URLError as e:
