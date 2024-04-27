@@ -2,7 +2,7 @@
 """
 Sends a POST request to http://0.0.0.0:5000/search_user
 with a letter as a parameter.
-Displays the id and name if the response is 
+Displays the id and name if the response is
 properly JSON formatted and not empty.
 """
 
@@ -22,7 +22,7 @@ if __name__ == "__main__":
         if response.status_code == 200:
             json_response = response.json()
             if isinstance(json_response, dict) and json_response:
-                jres =  json_response['name']
+                jres = json_response['name']
                 print("[{}] {}".format(json_response['id'], jres))
             else:
                 print("No result")
