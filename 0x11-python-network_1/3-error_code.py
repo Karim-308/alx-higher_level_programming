@@ -1,24 +1,20 @@
 #!/usr/bin/python3
 """
-Retrieves data from a given URL and displays the decoded response body.
+Sends a request to a URL and displays the body of the response.
 """
 
-from urllib import request as req
-from urllib import error as err
-import sys
-
 if __name__ == "__main__":
+    import sys
+    from urllib import request, error
+
     # Get the URL from the command-line argument
     target_url = sys.argv[1]
 
     try:
-        # Open a connection to the URL
-        with req.urlopen(target_url) as response:
-            # Read the response body
-            response_body = response.read()
-
-            # Display the decoded response body
-            print(response_body.decode('utf-8'))
-    except err.URLError as e:
-        # Handle URL errors
-        print("Error:", e)
+        # Send a request to the URL
+        with request.urlopen(target_url) as response:
+            # Display the body of the response
+            print(response.read().decode('UTF-8'))
+    except error.HTTPError as e:
+        # Handle HTTP errors
+        print('Error code:', e.code)
