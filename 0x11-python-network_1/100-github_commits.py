@@ -8,9 +8,9 @@ from sys import argv
 
 if __name__ == '__main__':
     # Construct the URL for fetching commits from a GitHub repository
-    repository_owner = argv[2]
-    repository_name = argv[1]
-    url = "https://api.github.com/repos/{}/{}/commits".format(repository_owner, repository_name)
+    owner = argv[2]
+    name = argv[1]
+    url = "https://api.github.com/repos/{}/{}/commits".format(owner, name)
 
     # Send a GET request to fetch commits from the GitHub API
     response = requests.get(url)
