@@ -11,7 +11,10 @@ if __name__ == "__main__":
     q = sys.argv[1]
 
     info = {'q': q}
-    response = requests.post("http://0.0.0.0:5000/search_user", data=info)
+    response = requests.post(
+        "http://0.0.0.0:5000/search_user",
+        data=info
+    )
 
     try:
         if response.status_code == 200:
